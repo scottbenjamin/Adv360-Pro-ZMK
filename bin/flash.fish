@@ -8,11 +8,12 @@ function get_latest_file
     set latest_file ""
     set latest_mtime 0
 
-    if not test -e $firmware_dir/*$pattern*
+    set -l matches $firmware_dir/*$pattern* 2>/dev/null
+    if test (count $matches) -eq 0
         return
     end
 
-    for file in $firmware_dir/*$pattern*
+    for file in $matches
         if test -f $file
             set mtime (stat -L -c %Y $file)
             if test $mtime -gt $latest_mtime
@@ -67,13 +68,26 @@ if test -z "$right_file"
     print_error "❌ No right firmware file found in $firmware_dir"
 end
 
-if test -z "$left_file" -o -z "$right_file"
-    print_error "❌ Firmware files are missing. Aborting."
+if test -z "$left_file"
+    print_error "❌ Left firmware is required. Aborting."
+    exit 1
+end
+
+# --- Prompt user whether to flash right half ---
+echo "Do you want to flash the RIGHT half as well? (y/n): "
+read -l flash_right
+
+if test "$flash_right" = "y"
+    if test -z "$right_file"
+        print_error "❌ Right firmware not found, cannot flash right half."
+        exit 1
+    end
+else if test "$flash_right" != "n"
+    print_error "Invalid input. Please enter 'y' or 'n'."
     exit 1
 end
 
 # --- STEP 1: Flash LEFT side ---
-print_info "📥 Please plug in the LEFT half in bootloader mode..."
 wait_for_mount
 
 print_info "Copying $left_file to $mount_point..."
@@ -83,16 +97,17 @@ and print_success "✅ Left firmware copied successfully."
 print_info "📤 Now unplug the LEFT half..."
 wait_for_unmount
 
-# --- STEP 2: Flash RIGHT side ---
-print_info "📥 Please plug in the RIGHT half in bootloader mode..."
-wait_for_mount
+# --- STEP 2: Flash RIGHT side (optional) ---
+if test "$flash_right" = "y"
+    print_info "📥 Please plug in the RIGHT half in bootloader mode..."
+    wait_for_mount
 
-print_info "Copying $right_file to $mount_point..."
-cp $right_file $mount_point
-and print_success "✅ Right firmware copied successfully."
+    print_info "Copying $right_file to $mount_point..."
+    cp $right_file $mount_point
+    and print_success "✅ Right firmware copied successfully."
 
-print_info "📤 Unplug the RIGHT half to complete the update..."
-wait_for_unmount
+    print_info "📤 Unplug the RIGHT half to complete the update..."
+    wait_for_unmount
+end
 
-print_success "🎉 Firmware update complete!"
-
+print_success "\n🎉 Firmware update complete!"

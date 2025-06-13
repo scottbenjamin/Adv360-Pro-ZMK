@@ -88,6 +88,7 @@ else if test "$flash_right" != "n"
 end
 
 # --- STEP 1: Flash LEFT side ---
+print_info "📥 Please plug in the LEFT half in bootloader mode..."
 wait_for_mount
 
 print_info "Copying $left_file to $mount_point..."

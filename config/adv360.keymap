@@ -59,7 +59,7 @@
 
         gaming {
             bindings = <&tog 7>;
-            key-positions = <52 6>;
+            key-positions = <6 9>;
         };
     };
 

@@ -56,6 +56,16 @@
             bindings = <&kp ESCAPE>;
             key-positions = <41 42>;
         };
+
+        gaming {
+            bindings = <&sl 8>;
+            key-positions = <52 10>;
+        };
+
+        baselay {
+            bindings = <&sl 0>;
+            key-positions = <52 1>;
+        };
     };
 
     keymap {

@@ -39,19 +39,19 @@ end
 
 function print_info
     set_color cyan
-    echo -n $argv
+    echo $argv
     set_color normal
 end
 
 function print_success
     set_color green
-    echo -n $argv
+    echo $argv
     set_color normal
 end
 
 function print_error
     set_color red
-    echo -n $argv
+    echo $argv
     set_color normal
 end
 

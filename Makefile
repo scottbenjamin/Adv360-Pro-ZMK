@@ -15,6 +15,7 @@ all:
 	$(shell bin/get_version_local.sh clique >> /dev/null)
 	$(DOCKER) build --tag zmk --file Dockerfile .
 	$(DOCKER) run --rm -it --name zmk \
+		--network=none \
 		-v $(PWD)/firmware:/app/firmware$(SELINUX1) \
 		-v $(PWD)/config:/app/config:ro$(SELINUX2) \
 		-e TIMESTAMP=$(TIMESTAMP) \
@@ -27,6 +28,7 @@ left:
 	$(shell bin/get_version_local.sh clique >> /dev/null)
 	$(DOCKER) build --tag zmk --file Dockerfile .
 	$(DOCKER) run --rm -it --name zmk \
+		--network=none \
 		-v $(PWD)/firmware:/app/firmware$(SELINUX1) \
 		-v $(PWD)/config:/app/config:ro$(SELINUX2) \
 		-e TIMESTAMP=$(TIMESTAMP) \

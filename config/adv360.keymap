@@ -56,43 +56,6 @@
             bindings = <&kp ESCAPE>;
             key-positions = <41 42>;
         };
-
-        gaming_fn_lpar_left {
-            bindings = <&kp LS(N9)>;
-            key-positions = <60 32>;
-            timeout-ms = <1000>;
-            slow-release;
-        };
-
-        gaming_fn_lpar_right {
-            bindings = <&kp LS(N9)>;
-            key-positions = <75 32>;
-            timeout-ms = <1000>;
-            slow-release;
-        };
-
-        gaming_fn_rpar_left {
-            bindings = <&kp LS(N0)>;
-            key-positions = <60 33>;
-            timeout-ms = <1000>;
-            slow-release;
-        };
-
-        gaming_fn_rpar_right {
-            bindings = <&kp LS(N0)>;
-            key-positions = <75 33>;
-            timeout-ms = <1000>;
-            slow-release;
-        };
-    };
-
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-
-        fn_gaming {
-            if-layers = <1 3>;
-            then-layer = <4>;
-        };
     };
 
     keymap {
@@ -132,24 +95,13 @@
         };
 
         gaming {
-            display-name = "gaming";
+            display-name = "Layer3";
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans    &trans
-&trans  &kp A   &kp S   &kp D   &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &kp J   &kp K   &kp L   &kp SEMI  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans                  &trans      &trans                  &trans  &trans  &trans  &trans  &trans    &trans
 &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans      &trans  &trans  &trans          &trans  &trans  &trans  &trans    &trans
-            >;
-        };
-
-        fn_gaming {
-            display-name = "Fn+Gaming";
-            bindings = <
-&kp F1  &kp F2  &kp F3  &kp F4  &kp F5                &kp F6                 &tog 0                                       &mo 2   &kp F7         &kp F8    &kp F9      &kp F10  &kp F11  &kp F12
-&trans  &trans  &trans  &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &none                                        &none   &kp PAGE_UP    &kp HOME  &kp INSERT  &trans   &trans   &trans
-&trans  &trans  &trans  &trans  &kp LS(N9)            &kp LS(N0)             &none   &trans   &trans      &trans  &trans  &none   &kp PAGE_DOWN  &kp END   &kp DEL     &trans   &trans   &trans
-&trans  &trans  &trans  &trans  &kp LS(LEFT_BRACKET)  &kp LS(RIGHT_BRACKET)                   &trans      &trans                  &trans         &trans    &trans      &trans   &trans   &trans
-&trans  &trans  &trans  &trans  &trans                                       &trans  &kp LC(SPACE)  &trans      &trans  &trans  &trans                 &trans    &trans      &trans   &trans   &trans
             >;
         };
 

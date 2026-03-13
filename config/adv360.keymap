@@ -60,25 +60,29 @@
         gaming_fn_lpar_left {
             bindings = <&kp LS(N9)>;
             key-positions = <60 32>;
-            timeout-ms = <280>;
+            timeout-ms = <1000>;
             slow-release;
         };
 
         gaming_fn_lpar_right {
             bindings = <&kp LS(N9)>;
             key-positions = <75 32>;
-            timeout-ms = <280>;
+            timeout-ms = <1000>;
             slow-release;
         };
 
         gaming_fn_rpar_left {
             bindings = <&kp LS(N0)>;
             key-positions = <60 33>;
+            timeout-ms = <1000>;
+            slow-release;
         };
 
         gaming_fn_rpar_right {
             bindings = <&kp LS(N0)>;
             key-positions = <75 33>;
+            timeout-ms = <1000>;
+            slow-release;
         };
     };
 
@@ -99,7 +103,7 @@
             bindings = <
 &kp EQUAL  &kp N1           &kp N2           &kp N3             &kp N4           &kp N5  &tog 3                                                                                              &mo 2    &kp N6  &kp N7        &kp N8              &kp N9            &kp N0               &kp MINUS
 &kp TAB    &kp Q            &kp W            &kp E              &kp R            &kp T   &none                                                                                               &none    &kp Y   &kp U         &kp I               &kp O             &kp P                &kp BSLH
-&kp ESC    &HML LEFT_GUI A  &HML LEFT_ALT S  &HML LEFT_SHIFT D  &HML LCTRL F     &kp G   &kp LS(LA(LC(LEFT_GUI)))  &kp LEFT_ALT      &none                 &kp ESCAPE         &kp RIGHT_ALT  &none    &kp H   &HMR RCTRL J  &HMR RIGHT_SHIFT K  &HMR RIGHT_ALT L  &HMR RIGHT_GUI SEMI  &kp SQT
+&kp ESC    &kp A            &kp S            &kp D              &kp F             &kp G   &kp LS(LA(LC(LEFT_GUI)))  &kp LEFT_ALT      &none                 &kp ESCAPE         &kp RIGHT_ALT  &none    &kp H   &kp J          &kp K               &kp L             &kp SEMI             &kp SQT
 &kp LSHFT  &kp Z            &kp X            &kp C              &kp V            &kp B                                               &none                 &kp RIGHT_CONTROL                          &kp N   &kp M         &kp COMMA           &kp DOT           &kp FSLH             &kp RSHFT
 &mo 1      &kp GRAVE        &caps_word       &kp LEFT_ARROW     &kp RIGHT_ARROW          &kp SPACE                 &kp LEFT_CONTROL  &kp LG(LEFT_GUI)      &kp RIGHT_GUI      &kp BACKSPACE  &kp RET          &kp UP_ARROW  &kp DOWN_ARROW      &kp LBKT          &kp RBKT             &mo 1
             >;
